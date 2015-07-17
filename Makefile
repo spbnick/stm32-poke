@@ -40,6 +40,7 @@ DEPS = $(OBJS:.o=.d)
 	$(CC)objcopy -O binary $< $@
 
 clean:
+	$(MAKE) -Clib clean
 	rm -f $(OBJS)
 	rm -f $(DEPS)
 	rm -f $(PROGRAMS:=.elf)
