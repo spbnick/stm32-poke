@@ -1,7 +1,6 @@
 CC=arm-none-eabi-
 
-
-TARGET_CFLAGS=-mcpu=cortex-m3 -mthumb
+TARGET_CFLAGS = -mcpu=cortex-m3 -mthumb
 COMMON_CFLAGS = $(TARGET_CFLAGS) -Ilib
 COMMON_LDFLAGS = -Llib
 
