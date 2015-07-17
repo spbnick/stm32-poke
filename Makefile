@@ -17,11 +17,11 @@ lib:
 	$(MAKE) -Clib
 
 %.o: %.c
-	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -g3 -c -o $@ $<
+	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -c -o $@ $<
 	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -MM $< > $*.d
 
 %.o: %.S
-	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -g3 -D__ASSEMBLY__ -c -o $@ $<
+	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -D__ASSEMBLY__ -c -o $@ $<
 	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -D__ASSEMBLY__ -MM $< > $*.d
 
 define ELF_RULE
