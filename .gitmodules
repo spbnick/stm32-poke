@@ -1,0 +1,4 @@
+[submodule "libstammer"]
+	path = lib
+	url = git@github.com:spbnick/libstammer.git
+	branch = master

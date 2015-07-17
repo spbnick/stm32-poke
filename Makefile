@@ -1,30 +1,35 @@
 CC=arm-none-eabi-
 
+
 TARGET_CFLAGS=-mcpu=cortex-m3 -mthumb
+COMMON_CFLAGS = $(TARGET_CFLAGS) -Ilib
+COMMON_LDFLAGS = -Llib
 
 PROGRAMS = \
     blink       \
     pwm_blink   \
     usart_hello
 
-COMMON_MODULES = init
-
 all: $(PROGRAMS:=.bin)
 
+.PHONY: lib
+lib:
+	$(MAKE) -Clib
+
 %.o: %.c
-	$(CC)gcc $(TARGET_CFLAGS) $(CFLAGS) -g3 -c -o $@ $<
-	$(CC)gcc $(TARGET_CFLAGS) $(CFLAGS) -MM $< > $*.d
+	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -g3 -c -o $@ $<
+	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -MM $< > $*.d
 
 %.o: %.S
-	$(CC)gcc $(TARGET_CFLAGS) $(CFLAGS) -g3 -D__ASSEMBLY__ -c -o $@ $<
-	$(CC)gcc $(TARGET_CFLAGS) $(CFLAGS) -D__ASSEMBLY__ -MM $< > $*.d
+	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -g3 -D__ASSEMBLY__ -c -o $@ $<
+	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -D__ASSEMBLY__ -MM $< > $*.d
 
 define ELF_RULE
 $(strip $(1))_OBJS = $(1)_vectors.o \
-                     $$(addsuffix .o, $(1) $$($(strip $(1))_MODULES) \
-				                           $$(COMMON_MODULES))
-$(1).elf: $$($(strip $(1))_OBJS) flash.ld memory.ld
-	$(CC)ld -T flash.ld -o $$@ $$($(strip $(1))_OBJS)
+                     $$(addsuffix .o, $(1) $$($(strip $(1))_MODULES))
+$(1).elf: $$($(strip $(1))_OBJS) flash.ld memory.ld lib
+	$(CC)ld -T flash.ld $(COMMON_LDFLAGS) -o $$@ \
+		$$($(strip $(1))_OBJS) -lstammer
 OBJS += $$($(strip $(1))_OBJS)
 endef
 $(foreach p, $(PROGRAMS), $(eval $(call ELF_RULE, $(p))))
