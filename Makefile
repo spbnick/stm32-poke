@@ -9,9 +9,10 @@ PROGRAMS = \
     pwm_blink   \
     usart_hello
 
+.PHONY: lib clean
+
 all: $(PROGRAMS:=.bin)
 
-.PHONY: lib
 lib:
 	$(MAKE) -Clib
 
