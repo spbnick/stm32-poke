@@ -13,7 +13,6 @@ reset(void)
     const char *message = "Hello, world!\r\n";
     const char *p;
     unsigned int c;
-    unsigned int sr;
     /* Basic init */
     init();
 
