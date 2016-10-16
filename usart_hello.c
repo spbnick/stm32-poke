@@ -37,7 +37,7 @@ reset(void)
     /*
      * Configure USART
      */
-    /* Enable clock to USART2 */
+    /* Enable clock to USART1 */
     RCC->apb2enr |= RCC_APB2ENR_USART1EN_MASK;
 
     /* Enable USART, leave the default mode of 8N1 */
