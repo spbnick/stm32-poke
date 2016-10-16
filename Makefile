@@ -1,20 +1,17 @@
 CC=arm-none-eabi-
 
 TARGET_CFLAGS = -mcpu=cortex-m3 -mthumb
-COMMON_CFLAGS = $(TARGET_CFLAGS) -Wall -Wextra -Werror -Ilib
-COMMON_LDFLAGS = -Llib
+COMMON_CFLAGS = $(TARGET_CFLAGS) -Wall -Wextra -Werror
+LIBS = -lstammer
 
 PROGRAMS = \
     blink       \
     pwm_blink   \
     usart_hello
 
-.PHONY: lib clean
+.PHONY: clean
 
 all: $(PROGRAMS:=.bin)
-
-lib:
-	$(MAKE) -Clib
 
 %.o: %.c
 	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -c -o $@ $<
@@ -27,9 +24,9 @@ lib:
 define ELF_RULE
 $(strip $(1))_OBJS = $(1)_vectors.o \
                      $$(addsuffix .o, $(1) $$($(strip $(1))_MODULES))
-$(1).elf: $$($(strip $(1))_OBJS) flash.ld memory.ld lib
-	$(CC)ld -T flash.ld $(COMMON_LDFLAGS) -o $$@ \
-		$$($(strip $(1))_OBJS) -lstammer
+$(1).elf: $$($(strip $(1))_OBJS) flash.ld memory.ld
+	$(CC)ld -T flash.ld $(LDFLAGS) -o $$@ \
+		$$($(strip $(1))_OBJS) $(LIBS)
 OBJS += $$($(strip $(1))_OBJS)
 endef
 $(foreach p, $(PROGRAMS), $(eval $(call ELF_RULE, $(p))))
@@ -40,7 +37,6 @@ DEPS = $(OBJS:.o=.d)
 	$(CC)objcopy -O binary $< $@
 
 clean:
-	$(MAKE) -Clib clean
 	rm -f $(OBJS)
 	rm -f $(DEPS)
 	rm -f $(PROGRAMS:=.elf)
