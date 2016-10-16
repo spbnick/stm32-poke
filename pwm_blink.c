@@ -29,7 +29,7 @@ reset(void)
      * Enable PWM output
      */
     /* Set PA8 to alternate function push-pull output, max speed 2MHz */
-    GPIO_A->crh = (GPIO_C->crh & (~GPIO_CRH_MODE8_MASK) & (~GPIO_CRH_CNF8_MASK)) |
+    GPIO_A->crh = (GPIO_A->crh & (~GPIO_CRH_MODE8_MASK) & (~GPIO_CRH_CNF8_MASK)) |
                   (GPIO_MODE_OUTPUT_2MHZ << GPIO_CRH_MODE8_LSB) |
                   (GPIO_CNF_OUTPUT_AF_PUSH_PULL << GPIO_CRH_CNF8_LSB);
 
