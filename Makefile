@@ -7,6 +7,7 @@ LIBS = -lstammer
 PROGRAMS = \
     blink       \
     pwm_blink   \
+    spi_leds    \
     usart_hello
 
 .PHONY: clean
