@@ -16,8 +16,7 @@ systick_handler(void)
     GPIO_C->odr ^= GPIO_ODR_ODR13_MASK;
 }
 
-void
-reset(void)
+int main(void)
 {
     /* Basic init */
     init();

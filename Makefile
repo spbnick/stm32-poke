@@ -23,7 +23,7 @@ all: $(PROGRAMS:=.bin)
 	$(CC)gcc $(COMMON_CFLAGS) $(CFLAGS) -D__ASSEMBLY__ -MM $< > $*.d
 
 define ELF_RULE
-$(strip $(1))_OBJS = $(1)_vectors.o \
+$(strip $(1))_OBJS = vectors.o \
                      $$(addsuffix .o, $(1) $$($(strip $(1))_MODULES))
 $(1).elf: $$($(strip $(1))_OBJS) flash.ld memory.ld
 	$(CC)ld -T flash.ld $(LDFLAGS) -o $$@ \

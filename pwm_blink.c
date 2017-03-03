@@ -11,8 +11,7 @@
         asm ("wfi");    \
     } while (1)
 
-void
-reset(void)
+int main(void)
 {
     volatile struct tim *tim = TIM1;
 
