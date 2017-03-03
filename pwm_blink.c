@@ -12,7 +12,7 @@
     } while (1)
 
 void
-reset(void)
+reset_handler(void)
 {
     volatile struct tim *tim = TIM1;
 
