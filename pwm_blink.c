@@ -11,8 +11,8 @@
         asm ("wfi");    \
     } while (1)
 
-void
-reset_handler(void)
+int
+main(void)
 {
     volatile struct tim *tim = TIM1;
 

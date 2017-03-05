@@ -12,7 +12,7 @@
 /* Stack top */
 .word 0x20001000
 /* Handlers */
-handler reset_handler
+.word reset_handler
 handler nmi_handler
 handler hardfault_handler
 handler memmanage_handler
@@ -91,3 +91,9 @@ handler dma2_channel4_5_irq_handler
 default_handler:
     wfi
     b default_handler
+
+.weak  reset_handler
+.type  reset_handler, %function
+reset_handler:
+    bl  main
+    bx  lr

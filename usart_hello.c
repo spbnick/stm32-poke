@@ -6,8 +6,8 @@
 #include "gpio.h"
 #include "usart.h"
 
-void
-reset_handler(void)
+int
+main(void)
 {
     volatile struct usart *usart = USART1;
     const char *message = "Hello, world!\r\n";

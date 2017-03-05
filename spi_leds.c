@@ -50,8 +50,8 @@ systick_handler(void)
     VAL++;
 }
 
-void
-reset_handler(void)
+int
+main(void)
 {
     /* Basic init */
     init();
