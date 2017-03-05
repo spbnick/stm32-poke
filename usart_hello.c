@@ -7,7 +7,7 @@
 #include "usart.h"
 
 void
-reset(void)
+reset_handler(void)
 {
     volatile struct usart *usart = USART1;
     const char *message = "Hello, world!\r\n";

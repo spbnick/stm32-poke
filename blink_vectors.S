@@ -2,84 +2,91 @@
 
 .section ".vectors"
 
+/* Define a vector table entry and a handler symbol */
+.macro handler name
+    .word \name
+    .weak \name
+    .thumb_set \name, default_handler
+.endm
+
 /* Stack top */
 .word 0x20001000
 /* Handlers */
-.word reset             /* Reset */
-.word default_handler   /* NMI */
-.word default_handler   /* HardFault */
-.word default_handler   /* MemManage */
-.word default_handler   /* BusFault */
-.word default_handler   /* UsageFault */
-.word default_handler   /* Reserved1 */
-.word default_handler   /* Reserved2 */
-.word default_handler   /* Reserved3 */
-.word default_handler   /* Reserved4 */
-.word default_handler   /* SVCall */
-.word default_handler   /* Debug Monitor */
-.word default_handler   /* Reserved5 */
-.word default_handler   /* PendSV */
-.word systick_handler   /* SysTick */
-.word default_handler   /* WWDG */
-.word default_handler   /* PVD */
-.word default_handler   /* TAMPER */
-.word default_handler   /* RTC */
-.word default_handler   /* FLASH */
-.word default_handler   /* RCC */
-.word default_handler   /* EXTI0 */
-.word default_handler   /* EXTI1 */
-.word default_handler   /* EXTI2 */
-.word default_handler   /* EXTI3 */
-.word default_handler   /* EXTI4 */
-.word default_handler   /* DMA1_Channel1 */
-.word default_handler   /* DMA1_Channel2 */
-.word default_handler   /* DMA1_Channel3 */
-.word default_handler   /* DMA1_Channel4 */
-.word default_handler   /* DMA1_Channel5 */
-.word default_handler   /* DMA1_Channel6 */
-.word default_handler   /* DMA1_Channel7 */
-.word default_handler   /* ADC1_2 */
-.word default_handler   /* USB_HP_CAN_TX */
-.word default_handler   /* USB_LP_CAN_RX0 */
-.word default_handler   /* CAN_RX1 */
-.word default_handler   /* CAN_SCE */
-.word default_handler   /* EXTI9_5 */
-.word default_handler   /* TIM1_BRK */
-.word default_handler   /* TIM1_UP */
-.word default_handler   /* TIM1_TRG_COM */
-.word default_handler   /* TIM1_CC */
-.word default_handler   /* TIM2 */
-.word default_handler   /* TIM3 */
-.word default_handler   /* TIM4 */
-.word default_handler   /* I2C1_EV */
-.word default_handler   /* I2C1_ER */
-.word default_handler   /* I2C2_EV */
-.word default_handler   /* I2C2_ER */
-.word default_handler   /* SPI1 */
-.word default_handler   /* SPI2 */
-.word default_handler   /* USART1 */
-.word default_handler   /* USART2 */
-.word default_handler   /* USART3 */
-.word default_handler   /* EXTI15_10 */
-.word default_handler   /* RTCAlarm */
-.word default_handler   /* USBWakeup */
-.word default_handler   /* TIM8_BRK */
-.word default_handler   /* TIM8_UP */
-.word default_handler   /* TIM8_TRG_COM */
-.word default_handler   /* TIM8_CC */
-.word default_handler   /* ADC3 */
-.word default_handler   /* FSMC */
-.word default_handler   /* SDIO */
-.word default_handler   /* TIM5 */
-.word default_handler   /* SPI3 */
-.word default_handler   /* UART4 */
-.word default_handler   /* UART5 */
-.word default_handler   /* TIM6 */
-.word default_handler   /* TIM7 */
-.word default_handler   /* DMA2_Channel1 */
-.word default_handler   /* DMA2_Channel2 */
-.word default_handler   /* DMA2_Channel3 */
-.word default_handler   /* DMA2_Channel4_5 */
+handler reset_handler
+handler nmi_handler
+handler hardfault_handler
+handler memmanage_handler
+handler busfault_handler
+handler usagefault_handler
+handler reserved_1c_handler
+handler reserved_20_handler
+handler reserved_24_handler
+handler reserved_28_handler
+handler svcall_handler
+handler debug_monitor_handler
+handler reserved_34_handler
+handler pendsv_handler
+handler systick_handler
+handler wwdg_irq_handler
+handler pvd_irq_handler
+handler tamper_irq_handler
+handler rtc_irq_handler
+handler flash_irq_handler
+handler rcc_irq_handler
+handler exti0_irq_handler
+handler exti1_irq_handler
+handler exti2_irq_handler
+handler exti3_irq_handler
+handler exti4_irq_handler
+handler dma1_channel1_irq_handler
+handler dma1_channel2_irq_handler
+handler dma1_channel3_irq_handler
+handler dma1_channel4_irq_handler
+handler dma1_channel5_irq_handler
+handler dma1_channel6_irq_handler
+handler dma1_channel7_irq_handler
+handler adc1_2_irq_handler
+handler usb_hp_can_tx_irq_handler
+handler usb_lp_can_rx0_irq_handler
+handler can_rx1_irq_handler
+handler can_sce_irq_handler
+handler exti9_5_irq_handler
+handler tim1_brk_irq_handler
+handler tim1_up_irq_handler
+handler tim1_trg_com_irq_handler
+handler tim1_cc_irq_handler
+handler tim2_irq_handler
+handler tim3_irq_handler
+handler tim4_irq_handler
+handler i2c1_ev_irq_handler
+handler i2c1_er_irq_handler
+handler i2c2_ev_irq_handler
+handler i2c2_er_irq_handler
+handler spi1_irq_handler
+handler spi2_irq_handler
+handler usart1_irq_handler
+handler usart2_irq_handler
+handler usart3_irq_handler
+handler exti15_10_irq_handler
+handler rtcalarm_irq_handler
+handler usbwakeup_irq_handler
+handler tim8_brk_irq_handler
+handler tim8_up_irq_handler
+handler tim8_trg_com_irq_handler
+handler tim8_cc_irq_handler
+handler adc3_irq_handler
+handler fsmc_irq_handler
+handler sdio_irq_handler
+handler tim5_irq_handler
+handler spi3_irq_handler
+handler uart4_irq_handler
+handler uart5_irq_handler
+handler tim6_irq_handler
+handler tim7_irq_handler
+handler dma2_channel1_irq_handler
+handler dma2_channel2_irq_handler
+handler dma2_channel3_irq_handler
+handler dma2_channel4_5_irq_handler
 
 default_handler:
     wfi

@@ -17,7 +17,7 @@ systick_handler(void)
 }
 
 void
-reset(void)
+reset_handler(void)
 {
     /* Basic init */
     init();
