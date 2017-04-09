@@ -32,9 +32,8 @@ main(void)
      * Enable LED output
      */
     /* Set PC13 to general purpose open-drain output, max speed 2MHz */
-    GPIO_C->crh = (GPIO_C->crh & (~GPIO_CRH_MODE13_MASK) & (~GPIO_CRH_CNF13_MASK)) |
-                  (GPIO_MODE_OUTPUT_2MHZ << GPIO_CRH_MODE13_LSB) |
-                  (GPIO_CNF_OUTPUT_GP_OPEN_DRAIN << GPIO_CRH_CNF13_LSB);
+    gpio_pin_conf(GPIO_C, 13,
+                  GPIO_MODE_OUTPUT_2MHZ, GPIO_CNF_OUTPUT_GP_OPEN_DRAIN);
 
     /*
      * Set SysTick timer to fire the interrupt each half-second.
