@@ -63,7 +63,7 @@ main(void)
      * Enable clocks
      */
     /* Enable APB2 clock to I/O port A and SPI1 */
-    RCC->apb2enr |= RCC_APB2ENR_IOPAEN_MASK | RCC_APB2ENR_IOPCEN_MASK | RCC_APB2ENR_SPI1EN_MASK;
+    RCC->apb2enr |= RCC_APB2ENR_IOPAEN_MASK | RCC_APB2ENR_SPI1EN_MASK;
 
     /*
      * Configure pins
