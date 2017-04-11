@@ -5,6 +5,7 @@ COMMON_CFLAGS = $(TARGET_CFLAGS) -Wall -Wextra -Werror -g3
 LIBS = -lstammer
 
 PROGRAMS = \
+    adc_stream  \
     blink       \
     pwm_blink   \
     spi_leds    \
