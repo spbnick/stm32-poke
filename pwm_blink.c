@@ -1,10 +1,10 @@
 /*
  * Blink an LED on push-pull PA8 using TIM1 PWM mode
  */
-#include "rcc.h"
-#include "gpio.h"
-#include "init.h"
-#include "tim.h"
+#include <rcc.h>
+#include <gpio.h>
+#include <init.h>
+#include <tim.h>
 
 #define STOP \
     do {                \

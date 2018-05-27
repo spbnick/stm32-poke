@@ -1,13 +1,13 @@
 /*
  * Continuously take measurements with ADC1 on PA0 and output them on USART1
  */
-#include "init.h"
-#include "rcc.h"
-#include "gpio.h"
-#include "usart.h"
-#include "adc.h"
-#include "stk.h"
-#include "nvic.h"
+#include <init.h>
+#include <rcc.h>
+#include <gpio.h>
+#include <usart.h>
+#include <adc.h>
+#include <stk.h>
+#include <nvic.h>
 #include <stdbool.h>
 
 volatile struct adc *ADC;

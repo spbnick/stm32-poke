@@ -1,10 +1,10 @@
 /*
  * Say hello on USART1
  */
-#include "init.h"
-#include "rcc.h"
-#include "gpio.h"
-#include "usart.h"
+#include <init.h>
+#include <rcc.h>
+#include <gpio.h>
+#include <usart.h>
 
 int
 main(void)
