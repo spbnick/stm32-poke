@@ -43,7 +43,7 @@ main(void)
     /* Enable USART, leave the default mode of 8N1 */
     usart->cr1 |= USART_CR1_UE_MASK;
 
-    /* Set baud rate of 115200 based on PCLK1 at 36MHz */
+    /* Set baud rate of 115200 based on APB2 clock at 72MHz */
     usart->brr = usart_brr_val(72 * 1000 * 1000, 115200);
 
     /* Enable receiver and transmitter */
