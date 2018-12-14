@@ -7,6 +7,7 @@ LIBS = -lstammer
 PROGRAMS = \
     adc_stream      \
     blink           \
+    exti_led        \
     pwm_blink       \
     spi_leds        \
     tim_int_blink   \
