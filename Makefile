@@ -9,6 +9,7 @@ PROGRAMS = \
     blink           \
     exti_led        \
     pwm_blink       \
+    semihosting     \
     spi_leds        \
     tim_int_blink   \
     usart_hello
