@@ -5,13 +5,14 @@ COMMON_CFLAGS = $(TARGET_CFLAGS) -Wall -Wextra -Werror -g3
 LIBS = -lstammer
 
 PROGRAMS = \
-    adc_stream      \
-    blink           \
-    exti_led        \
-    pwm_blink       \
-    semihosting     \
-    spi_leds        \
-    tim_int_blink   \
+    adc_stream          \
+    blink               \
+    exti_led            \
+    pwm_blink           \
+    semihosting         \
+    semihosting_printf  \
+    spi_leds            \
+    tim_int_blink       \
     usart_hello
 
 .PHONY: clean
