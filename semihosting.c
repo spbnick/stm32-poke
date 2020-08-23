@@ -11,7 +11,7 @@ main(void)
 
     asm(".thumb\n\t"
         /* SYS_WRITE0 */
-        "mov r0, 0x04\n\t"
+        "mov r0, #0x04\n\t"
         /* String address */
         "ldr r1, %0\n\t"
         "bkpt 0xab\n\t"
