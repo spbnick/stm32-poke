@@ -30,7 +30,8 @@ all: $(PROGRAMS:=.bin)
 define ELF_RULE
 $(strip $(1))_OBJS = $$(addsuffix .o, $(1) $$($(strip $(1))_MODULES))
 $(1).elf: $$($(strip $(1))_OBJS)
-	$(CC)gcc -nostartfiles $(LDFLAGS) -T libstammer.ld -o $$@ \
+	$(CC)gcc -nostartfiles $(COMMON_CFLAGS) $(CFLAGS) $(LDFLAGS) \
+		-T libstammer.ld -o $$@ \
 		$$($(strip $(1))_OBJS) $(LIBS)
 OBJS += $$($(strip $(1))_OBJS)
 endef
